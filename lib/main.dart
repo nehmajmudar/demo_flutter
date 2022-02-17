@@ -1,6 +1,8 @@
-import 'package:demo_flutter/Screens/ticket_confirmation_screen.dart';
+import 'package:demo_flutter/CustomDialogues/delete_custom_dialogue.dart';
+import 'package:demo_flutter/CustomDialogues/inkwell_custom_dialogue.dart';
+import 'package:demo_flutter/CustomDialogues/privacyInfo_custom_dialogue.dart';
+import 'package:demo_flutter/CustomDialogues/searchbar_custom_dialogue.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
@@ -10,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is th00e root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,227 +19,147 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => SignUpPage(),
-        '/ticket_confirmation_screen': (context) => TicketDisplay()
+        '/': (context) => LoginButtons(),
       },
     );
   }
 }
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class LoginButtons extends StatefulWidget {
+  const LoginButtons({Key? key}) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _LoginButtonsState createState() => _LoginButtonsState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LoginButtonsState extends State<LoginButtons> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Color(0xffFF2b2c31),
-        leading: Icon(Icons.arrow_back),
-        elevation: 0,
+        backgroundColor: Colors.black,
+        title: Text("Buttons with alert dialogues",style: TextStyle(color: Colors.white),),
+        centerTitle: true,
       ),
+      backgroundColor: Colors.orangeAccent,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: 15.0,top: 8,bottom: 25.0),
-              width: MediaQuery.of(context).size.width,
-              color: Color(0xffFF2b2c31),
-              child: Text('Sign Up', style: TextStyle(color: Colors.white,fontSize: 27,fontWeight: FontWeight.bold),),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton(
-                    style: TextButton.styleFrom(
-                      alignment: Alignment.center,
-                      backgroundColor: Colors.black,
-                      padding: EdgeInsets.symmetric(vertical: 1.5,horizontal: 47.0),
+        child: Center(
+          child: Column(
+            children: [
+              GestureDetector(
+                  child: Container(
+                    height: 100,
+                    margin: EdgeInsets.only(top: 40.0,bottom: 40.0),
+                    width: 100,
+                    alignment: Alignment.center,
+                    child: Text("Delete content",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    decoration: BoxDecoration(
+                      color: Colors.white24,
+                      borderRadius: BorderRadius.circular(20.0)
                     ),
-                    onPressed: (){},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30.0)
-                      ),
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 15.0),
-                      child: Text('Email',style: TextStyle(color: Colors.white),))
-                ),
-                TextButton(
-                    style: TextButton.styleFrom(
-                      alignment: Alignment.center,
-                      backgroundColor: Colors.black,
-                      padding: EdgeInsets.symmetric(vertical: 1.5,horizontal: 47.0),
-                    ),
-                    onPressed: (){},
-                    child: Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(right: 15.0),
-                      child: Text('Phone Number',style: TextStyle(color: Colors.white),))
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 15.0,right: 15.0,top: 10.0,bottom: 15.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white24),
-                    borderRadius: BorderRadius.all(Radius.circular(15.0))
                   ),
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(color: Colors.white24),
-                  fillColor: Color(0xffFF2b2c31),
-                ),
+                  onTap: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return DeleteCustomAlert(title: "Delete content", content: "Are you sure to remove the content? You can access this file for 7 days in your trash.");
+                        }
+                    );
+                  // setState(() {});
+                }
               ),
-            ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'By continuing you agree to the ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13
-                      ),
+              GestureDetector(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    margin: EdgeInsets.only(bottom: 40.0),
+                    alignment: Alignment.center,
+                    child: Text("Privacy \nconfirmation",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(20.0)
                     ),
-                    TextSpan(
-                      text: 'Term of Service ',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Color(0xffFFfeb648)
-                      ),
-                      recognizer: TapGestureRecognizer()
+                  ),
+                  onTap: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return PrivacyCustomAlert(title: "Privacy info", content: "The backups with this functionality may contain some sensitive data.");
+                        }
+                    );
+                    setState(() {});
+                  }
+              ),
+              GestureDetector(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    margin: EdgeInsets.only(bottom: 40.0),
+                    alignment: Alignment.center,
+                    child: Text("Search bar",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(20.0)
                     ),
-                    TextSpan(
-                      text: 'and ',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13
-                      ),
+                  ),
+                  onTap: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return SearchbarCustomAlert(title: "Search bar", content: "Select the search bar position. The page will continue to appear from the same side.");
+                        }
+                    );
+                    setState(() {});
+                  }
+              ),
+              InkWell(
+                  splashColor: Colors.green,
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    alignment: Alignment.center,
+                    child: Text("InkWell Quiz",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                    decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(20.0)
                     ),
-                    TextSpan(
-                      text: 'Privacy Policy',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Color(0xffFFfeb648)
-                      ),
-                      recognizer: TapGestureRecognizer()
-                    ),
-                  ]
-                )
+                  ),
+                  onTap: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return InkwellCustomAlert(title: "Whoa! Take it easy", content: "You can only post 1 quiz in 2 minutes.");
+                        }
+                    );
+                  },
+                  onDoubleTap: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return InkwellCustomAlert(title: "Do you want to finish the quiz?", content: "You did it!");
+                        }
+                    );
+                  },
+                  onLongPress: (){
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (BuildContext context){
+                          return InkwellCustomAlert(title: "Oops! The quiz wasn't created", content: "You can try again.");
+                      }
+                  );
+                },
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/ticket_confirmation_screen');
-              },
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0,right: 8.0,bottom: 8.5,top: 20.0),
-                height: 50,
-                alignment: Alignment.center,
-                child: Text('Continue',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
-                decoration: BoxDecoration(
-                  color: Color(0xffFFfeb648),
-                  borderRadius: BorderRadius.circular(17),
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Text('or',style: TextStyle(color: Colors.white,fontSize: 13),),
-              color: Color(0xffFF2b2c31),
-            ),
-            TextButton(
-              onPressed: () {  },
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0,right: 8.0,top: 8.5),
-                height: 50,
-                alignment: Alignment.center,
-                child: Text('Continue with Apple',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15),),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(17),
-                ),
-              ),
-            ),
-            // SizedBox(
-            //   // width: MediaQuery.of(context).size.width,
-            //   // height: 7.0,
-            // ),
-            TextButton(
-              onPressed: () {  },
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0,right: 8.0),
-                height: 50,
-                alignment: Alignment.center,
-                child: Text('Continue with Facebook',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15),),
-                decoration: BoxDecoration(
-                  color: Color(0xffFF4267B2),
-                  borderRadius: BorderRadius.circular(17),
-                ),
-              ),
-            ),
-            // SizedBox(
-            //   width: MediaQuery.of(context).size.width,
-            //   height: 7.0,
-            // ),
-            TextButton(
-              onPressed: () {  },
-              child: Container(
-                margin: EdgeInsets.only(left: 8.0,right: 8.0,bottom: 23.5),
-                height: 50,
-                alignment: Alignment.center,
-                child: Text('Continue with Google',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15),),
-                decoration: BoxDecoration(
-                  color: Color(0xffFF497ce5),
-                  borderRadius: BorderRadius.circular(17),
-                ),
-              ),
-            ),
-            // Container(
-            //   margin: EdgeInsets.only(left: 15.0,right: 15.0),
-            //   // height: 60,
-            //   alignment: Alignment.center,
-            //   child: Text('or Login or continue as guest',style: TextStyle(color: Colors.white,fontSize: 13),),
-            //   color: Color(0xffFF2b2c31),
-            // ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Or ',
-                      style: TextStyle(
-                        color: Colors.white,
-                          fontSize: 13
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Login or continue as guest',
-                      style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xffFFfeb648)
-                      ),
-                      recognizer: TapGestureRecognizer()
-                    ),
-                  ]
-                )
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      backgroundColor: Color(0xffFF2b2c31),
     );
   }
 }
-
-
