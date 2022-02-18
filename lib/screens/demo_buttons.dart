@@ -48,7 +48,6 @@ class _DemoButtonsState extends State<DemoButtons> {
                           return DeleteCustomAlert(title: AppString.txtDeleteContent, content: AppString.txtAreYouSureToRemoveTheContent);
                         }
                     );
-                    // setState(() {});
                   }
               ),
               GestureDetector(
@@ -71,7 +70,6 @@ class _DemoButtonsState extends State<DemoButtons> {
                           return PrivacyCustomAlert(title: AppString.txtPrivacyInfo, content: AppString.txtTheBackupsWithThisFunctionalityMayContainSomeSensitiveData);
                         }
                     );
-                    setState(() {});
                   }
               ),
               GestureDetector(
@@ -94,7 +92,6 @@ class _DemoButtonsState extends State<DemoButtons> {
                           return SearchbarCustomAlert(title: AppString.txtSearchBar, content: AppString.txtSelectTheSearchBar);
                         }
                     );
-                    setState(() {});
                   }
               ),
               InkWell(

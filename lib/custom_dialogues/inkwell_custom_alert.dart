@@ -42,7 +42,6 @@ class _InkwellCustomAlertState extends State<InkwellCustomAlert> {
                 ),
                 onTap: (){
                   Navigator.of(context).pop();
-                  setState(() {});
                 },
               ),
             ),

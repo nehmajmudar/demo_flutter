@@ -23,7 +23,6 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
         height: 225,
         padding: EdgeInsets.all(15.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("${widget.title}",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 20),textAlign: TextAlign.left,),
             SizedBox(
@@ -54,13 +53,13 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
               height: 15,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
                   child: Container(
                     child: Text(AppString.txtCancel,style: TextStyle(color: AppColors.colorBlack)),
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 30.0),
                     decoration: BoxDecoration(
                       color: AppColors.colorGrey300,
                       borderRadius: BorderRadius.circular(10.0)
@@ -68,15 +67,13 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
                   ),
                   onTap: (){
                     Navigator.of(context).pop();
-                    setState(() {
-                    });
                   },
                 ),
                 GestureDetector(
                   child: Container(
                     child: Text(AppString.txtConfirm,style: TextStyle(color: AppColors.colorWhite)),
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0),
+                    padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 30.0),
                     decoration: BoxDecoration(
                         color: AppColors.colorBlue,
                         borderRadius: BorderRadius.circular(10.0)
