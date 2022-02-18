@@ -1,3 +1,5 @@
+import 'package:demo_flutter/res/colors.dart';
+import 'package:demo_flutter/res/strings.dart';
 import 'package:flutter/material.dart';
 
 class DeleteCustomAlert extends StatefulWidget {
@@ -12,7 +14,7 @@ class DeleteCustomAlert extends StatefulWidget {
 
 class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
 
-  var showThisAgain=false;
+  var checkboxPreferenceToShow=false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
             SizedBox(
               height: 10,
             ),
-            Text("${widget.content}",style: TextStyle(color: Colors.grey),),
+            Text("${widget.content}",style: TextStyle(color: AppColors.colorGrey),),
             SizedBox(
               height: 10,
             ),
@@ -35,17 +37,17 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Checkbox(
-                    value: showThisAgain,
+                    value: checkboxPreferenceToShow,
                     onChanged: (value){
                       setState(() {
-                        showThisAgain=value!;
+                        checkboxPreferenceToShow=value!;
                       });
                     }
                   ),
                 SizedBox(
                   width: 10,
                 ),
-                Text("Do not show it anymore",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
+                Text(AppString.txtDoNotShowItAnymore,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold))
               ],
             ),
             SizedBox(
@@ -56,11 +58,11 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
               children: [
                 GestureDetector(
                   child: Container(
-                    child: Text("Cancel",style: TextStyle(color: Colors.black)),
+                    child: Text(AppString.txtCancel,style: TextStyle(color: AppColors.colorBlack)),
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0),
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: AppColors.colorGrey300,
                       borderRadius: BorderRadius.circular(10.0)
                     ),
                   ),
@@ -72,22 +74,22 @@ class _DeleteCustomAlertState extends State<DeleteCustomAlert> {
                 ),
                 GestureDetector(
                   child: Container(
-                    child: Text("Confirm",style: TextStyle(color: Colors.white)),
+                    child: Text(AppString.txtConfirm,style: TextStyle(color: AppColors.colorWhite)),
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 50.0),
                     decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: AppColors.colorBlue,
                         borderRadius: BorderRadius.circular(10.0)
                     ),
                   ),
                   onTap: (){
                     Navigator.of(context).pop();
                     setState(() {
-                      if(showThisAgain){
-                        print("Checkbox was selected.");
+                      if(checkboxPreferenceToShow){
+                        print(AppString.txtCheckboxWasSelected);
                       }
                       else{
-                        print("Checkbox wasn't selected.");
+                        print(AppString.txtCheckboxWasNotSelected);
                       }
                     });
                   },

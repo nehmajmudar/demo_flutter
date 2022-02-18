@@ -1,3 +1,5 @@
+import 'package:demo_flutter/res/colors.dart';
+import 'package:demo_flutter/res/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -29,12 +31,12 @@ class _InkwellCustomAlertState extends State<InkwellCustomAlert> {
               child: GestureDetector(
                 child: Container(
                   width: 100,
-                  child: Text("Got it",style: TextStyle(color: Colors.white)),
+                  child: Text(AppString.txtGotIt,style: TextStyle(color: AppColors.colorWhite)),
                   margin: EdgeInsets.only(top: 15.0),
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 20.0),
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: AppColors.colorBlue,
                       borderRadius: BorderRadius.circular(10.0)
                   ),
                 ),

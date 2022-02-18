@@ -1,3 +1,5 @@
+import 'package:demo_flutter/res/colors.dart';
+import 'package:demo_flutter/res/strings.dart';
 import 'package:flutter/material.dart';
 
 class SearchbarCustomAlert extends StatefulWidget {
@@ -12,9 +14,10 @@ class SearchbarCustomAlert extends StatefulWidget {
 
 class _SearchbarCustomAlertState extends State<SearchbarCustomAlert> {
 
-  String groupPosition="Position";
-  String top="Top";
-  String bottom="Bottom";
+  String radioGroupPosition=AppString.txtRadioGroupPosition;
+  String radioTop=AppString.txtTop;
+  String radioBottom=AppString.txtBottom;
+  String txtWasSelected=AppString.txtWasSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -29,52 +32,52 @@ class _SearchbarCustomAlertState extends State<SearchbarCustomAlert> {
             SizedBox(
               height: 10,
             ),
-            Text("${widget.content}",style: TextStyle(color: Colors.grey),),
+            Text("${widget.content}",style: TextStyle(color: AppColors.colorGrey),),
             SizedBox(
               height: 10,
             ),
             Row(
               children: [
                 Radio(
-                  value: top,
-                  groupValue: groupPosition,
+                  value: radioTop,
+                  groupValue: radioGroupPosition,
                   onChanged: (value){
-                    groupPosition=top;
+                    radioGroupPosition=radioTop;
                     setState(() {});
                   }
                 ),
-                Text("Top",style: TextStyle(fontWeight: FontWeight.bold),)
+                Text(radioTop,style: TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
             Row(
               children: [
                 Radio(
-                    value: bottom,
-                    groupValue: groupPosition,
+                    value: radioBottom,
+                    groupValue: radioGroupPosition,
                     onChanged: (value){
-                      groupPosition=bottom;
+                      radioGroupPosition=radioBottom;
                       setState(() {});
                     }
                 ),
-                Text("Bottom",style: TextStyle(fontWeight: FontWeight.bold),)
+                Text(radioBottom,style: TextStyle(fontWeight: FontWeight.bold),)
               ],
             ),
             Center(
               child: GestureDetector(
                 child: Container(
                   width: 100,
-                  child: Text("Confirm",style: TextStyle(color: Colors.white)),
+                  child: Text(AppString.txtConfirm,style: TextStyle(color: AppColors.colorWhite)),
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 20.0),
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: AppColors.colorBlue,
                       borderRadius: BorderRadius.circular(10.0)
                   ),
                 ),
                 onTap: (){
                   Navigator.of(context).pop();
                   setState(() {
-                    print("$groupPosition was selected");
+                    print("$radioGroupPosition $txtWasSelected");
                   });
                 },
               ),
