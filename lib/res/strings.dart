@@ -27,4 +27,14 @@ class AppString{
   static final List<String> txtDropDownOptionsChoices=["Automatic","Always","Never"];
   static final String txtDropDownCurrentOption="Automatic";
   static final String txtRadioGroupPosition="Position";
+  static final String txtListviewButtons="ListView buttons";
+  static final String txtListView="ListView";
+  static final String txtListViewBuilder="ListView.Builder";
+  static final String txtSeperatedListView="Seperated ListView";
+  static final String txtGold="Gold";
+  static final String txtSilver="Silver";
+  static final String txtBronze="Bronze";
+  static final String txtMaroon="Maroon";
+  static final String txtMagenta="Magenta";
+  static final String txtTurquoise="Turquoise";
 }

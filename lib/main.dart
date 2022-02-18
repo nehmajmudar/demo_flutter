@@ -1,4 +1,7 @@
-import 'package:demo_flutter/screens/demo_buttons.dart';
+import 'package:demo_flutter/ui/home_screen.dart';
+import 'package:demo_flutter/ui/listview_builder_screen.dart';
+import 'package:demo_flutter/ui/listview_screen.dart';
+import 'package:demo_flutter/ui/separated_listview_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 void main() {
@@ -16,7 +19,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => DemoButtons(),
+        '/': (context) => HomeScreen(),
+        '/listview_screen': (context) => ListviewScreen(),
+        '/listview_builder_screen': (context) => ListviewBuilderScreen(),
+        '/separated_listview_screen': (context) => SeparatedListviewScreen()
       },
     );
   }
