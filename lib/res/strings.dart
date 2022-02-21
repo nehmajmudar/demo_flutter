@@ -27,4 +27,8 @@ class AppString{
   static final List<String> txtDropDownOptionsChoices=["Automatic","Always","Never"];
   static final String txtDropDownCurrentOption="Automatic";
   static final String txtRadioGroupPosition="Position";
+  static final String txtGridview="Gridview";
+  static final String txtGridviewBuilder="Gridviewbuilder";
+  static final String txtGridviewCustom="GridviewCustom";
+  static final String txtTextHere="Text here.";
 }
