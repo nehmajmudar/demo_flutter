@@ -31,4 +31,6 @@ class AppString{
   static final String txtGridviewExtent="GridviewExtent";
   static final String txtTextHere="Text here.";
   static final String txtHomeScreen="Home Screen";
+  static final String txtDatePicker="Date Picker";
+  static final String txtChooseDate="Choose date";
 }

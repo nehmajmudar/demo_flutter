@@ -10,6 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  DateTime currentDate=DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,42 +22,32 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            HomeScreenContent(colorContainer: AppColors.colorRed, stringContainer: AppString.txtGridview),
-            HomeScreenContent(colorContainer: AppColors.colorBlue, stringContainer: AppString.txtGridviewBuilder),
-            HomeScreenContent(colorContainer: AppColors.colorGreen, stringContainer: AppString.txtGridviewExtent),
+            ElevatedButton(
+              onPressed: (){
+                _datePicker(context);
+              },
+              child: Text(AppString.txtChooseDate)
+            ),
+            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}")
           ],
         ),
       ),
     );
   }
-}
 
-
-class HomeScreenContent extends StatelessWidget {
-
-  final Color colorContainer;
-  final String stringContainer;
-  const HomeScreenContent({Key? key,required this.colorContainer,required this.stringContainer}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        child: Text(stringContainer,style: TextStyle(color: colorContainer,fontSize: 20),),
-        margin: EdgeInsets.only(top: 20.0,bottom: 20.0),
-      ),
-      onTap: (){
-        if(stringContainer==AppString.txtGridview){
-          Navigator.pushNamed(context, '/gridview_screen');
-        }
-        if(stringContainer==AppString.txtGridviewBuilder){
-          Navigator.pushNamed(context, '/gridview_builder_screen');
-        }
-        if(stringContainer==AppString.txtGridviewExtent){
-          Navigator.pushNamed(context, '/gridview_extent_screen');
-        }
-      },
+  _datePicker(BuildContext context) async {
+    final DateTime? selected=await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2021),
+      lastDate: DateTime.now()
     );
+    if(selected!=null && selected!=currentDate){
+      setState(() {
+        currentDate=selected;
+      });
+    }
   }
 }

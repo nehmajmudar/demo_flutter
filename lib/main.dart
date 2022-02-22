@@ -1,6 +1,4 @@
-import 'package:demo_flutter/screens/gridview_builder_screen.dart';
-import 'package:demo_flutter/screens/gridview_extent_screen.dart';
-import 'package:demo_flutter/screens/gridview_screen.dart';
+
 import 'package:demo_flutter/screens/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-      ),
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
-        '/gridview_screen': (context) => GridviewScreen(),
-        '/gridview_builder_screen': (context) => GridviewBuilderScreen(),
-        '/gridview_extent_screen': (context) => GridviewExtentScreen()
       },
     );
   }
