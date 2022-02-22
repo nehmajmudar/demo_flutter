@@ -1,5 +1,6 @@
-import 'package:demo_flutter/res/colors.dart';
-import 'package:demo_flutter/res/strings.dart';
+import 'package:demo_flutter/res/app_colors.dart';
+import 'package:demo_flutter/res/app_strings.dart';
+import 'package:demo_flutter/ui/gridview_content.dart';
 import 'package:flutter/material.dart';
 
 class GridviewExtentScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _GridviewExtentScreenState extends State<GridviewExtentScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorBlack,
-        title: Text(AppString.txtGridview),
+        title: Text(AppString.txtGridviewExtent),
         centerTitle: true,
         leading: IconButton(
             onPressed: (){
@@ -30,38 +31,14 @@ class _GridviewExtentScreenState extends State<GridviewExtentScreen> {
         crossAxisSpacing: 5,
         maxCrossAxisExtent: 300,
         children: [
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
         ],
       )
     );

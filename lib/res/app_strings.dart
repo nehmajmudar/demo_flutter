@@ -24,11 +24,11 @@ class AppString{
   static final String txtWasSelected="was selected.";
   static final String txtTop="Top";
   static final String txtBottom="Bottom";
-  static final List<String> txtDropDownOptionsChoices=["Automatic","Always","Never"];
   static final String txtDropDownCurrentOption="Automatic";
   static final String txtRadioGroupPosition="Position";
   static final String txtGridview="Gridview";
   static final String txtGridviewBuilder="Gridviewbuilder";
-  static final String txtGridviewCustom="GridviewCustom";
+  static final String txtGridviewExtent="GridviewExtent";
   static final String txtTextHere="Text here.";
+  static final String txtHomeScreen="Home Screen";
 }

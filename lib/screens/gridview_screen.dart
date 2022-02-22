@@ -1,6 +1,7 @@
-import 'package:demo_flutter/res/colors.dart';
-import 'package:demo_flutter/res/strings.dart';
+import 'package:demo_flutter/res/app_colors.dart';
+import 'package:demo_flutter/res/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:demo_flutter/ui/gridview_content.dart';
 
 class GridviewScreen extends StatefulWidget {
   const GridviewScreen({Key? key}) : super(key: key);
@@ -30,38 +31,14 @@ class _GridviewScreenState extends State<GridviewScreen> {
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
         children: [
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorBlue,
-          ),
-          Container(
-            child: Text(AppString.txtTextHere,textAlign: TextAlign.center,),
-            color: AppColors.colorGreen,
-          ),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
+          GridviewContent(colorContainer: AppColors.colorBlue),
+          GridviewContent(colorContainer: AppColors.colorGreen),
         ],
       ),
     );

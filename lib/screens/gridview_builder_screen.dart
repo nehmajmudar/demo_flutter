@@ -1,5 +1,5 @@
-import 'package:demo_flutter/res/colors.dart';
-import 'package:demo_flutter/res/strings.dart';
+import 'package:demo_flutter/res/app_colors.dart';
+import 'package:demo_flutter/res/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class GridviewBuilderScreen extends StatefulWidget {
@@ -15,7 +15,7 @@ class _GridviewBuilderScreenState extends State<GridviewBuilderScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorBlack,
-        title: Text(AppString.txtGridview),
+        title: Text(AppString.txtGridviewBuilder),
         centerTitle: true,
         leading: IconButton(
             onPressed: (){
@@ -26,8 +26,8 @@ class _GridviewBuilderScreenState extends State<GridviewBuilderScreen> {
       ),
       body: GridView.builder(
         padding: EdgeInsets.all(5),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 300,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
           mainAxisSpacing: 5,
           crossAxisSpacing: 5
         ),
