@@ -33,4 +33,6 @@ class AppString{
   static final String txtHomeScreen="Home Screen";
   static final String txtDatePicker="Date Picker";
   static final String txtChooseDate="Choose date";
+  static final String txtAction="Action";
+  static final String txtFileDownloaded="File downloaded";
 }

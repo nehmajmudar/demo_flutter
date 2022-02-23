@@ -1,53 +1,81 @@
 import 'package:demo_flutter/res/app_colors.dart';
 import 'package:demo_flutter/res/app_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-
-  DateTime currentDate=DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.colorBlack,
-        title: Text(AppString.txtHomeScreen),
-        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppString.txtHomeScreen),
+              backgroundColor: AppColors.colorOrangeAccent,
+              action: SnackBarAction(
+                label: AppString.txtFileDownloaded,
+                onPressed: (){},
+              ),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+              behavior: SnackBarBehavior.floating,
+            )
+          );
+        },
+        child: Icon(Icons.file_download_done),
+        backgroundColor: AppColors.colorOrangeAccent,
+        splashColor: AppColors.colorBlack,
+        elevation: 2,
+        hoverColor: AppColors.colorGreen,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: (){
-                _datePicker(context);
+            GestureDetector(
+              child: Container(
+                height: 100,
+                width: 100,
+                color: AppColors.colorRed,
+              ),
+              onTap: (){
+                Fluttertoast.showToast(
+                  msg: AppString.txtTextHere,
+                  fontSize: 30,
+                  backgroundColor: AppColors.colorOrangeAccent,
+                  textColor: AppColors.colorBlack,
+                  gravity: ToastGravity.CENTER
+                );
               },
-              child: Text(AppString.txtChooseDate)
             ),
-            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}")
+            GestureDetector(
+              child: Container(
+                height: 100,
+                width: 100,
+                color: AppColors.colorRed,
+              ),
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(AppString.txtHomeScreen),
+                    backgroundColor: AppColors.colorOrangeAccent,
+                    action: SnackBarAction(
+                      label: AppString.txtAction,
+                      onPressed: (){},
+                    ),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                    behavior: SnackBarBehavior.floating,
+                  )
+                );
+              },
+            ),
           ],
         ),
       ),
     );
-  }
-
-  _datePicker(BuildContext context) async {
-    final DateTime? selected=await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2021),
-      lastDate: DateTime.now()
-    );
-    if(selected!=null && selected!=currentDate){
-      setState(() {
-        currentDate=selected;
-      });
-    }
   }
 }
