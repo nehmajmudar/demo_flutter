@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   DateTime currentDate=DateTime.now();
+  TimeOfDay selectedTime=TimeOfDay.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +31,17 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               child: Text(AppString.txtChooseDate)
             ),
-            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}")
+            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}"),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: (){
+                _timePicker(context);
+              },
+              child: Text(AppString.txtChooseTime)
+            ),
+            Text("${selectedTime.hour}:${selectedTime.minute}"),
           ],
         ),
       ),
@@ -47,6 +58,19 @@ class _HomeScreenState extends State<HomeScreen> {
     if(selected!=null && selected!=currentDate){
       setState(() {
         currentDate=selected;
+      });
+    }
+  }
+
+  _timePicker(BuildContext context) async{
+    final TimeOfDay? timeOfDay=await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial
+    );
+    if(timeOfDay!=null && timeOfDay!=selectedTime){
+      setState(() {
+        selectedTime=timeOfDay;
       });
     }
   }
