@@ -31,7 +31,11 @@ class AppString{
   static final String txtGridviewExtent="GridviewExtent";
   static final String txtTextHere="Text here.";
   static final String txtHomeScreen="Home Screen";
+  static final String txtSelectionScreen="Selection Screen";
   static final String txtDatePicker="Date Picker";
   static final String txtChooseDate="Choose date";
   static final String txtChooseTime="Choose time";
+  static final String txtImgHere="Image here";
+  static final String txtPressHere="Press here";
+  static final String txtSelectCheckbox="Select checkbox";
 }

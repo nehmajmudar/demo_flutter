@@ -1,5 +1,6 @@
 import 'package:demo_flutter/res/app_colors.dart';
 import 'package:demo_flutter/res/app_strings.dart';
+import 'package:demo_flutter/screens/selection_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,8 +12,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  DateTime currentDate=DateTime.now();
-  TimeOfDay selectedTime=TimeOfDay.now();
+  late bool checkboxValue;
+  String msgToDisplay="";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,53 +27,40 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: (){
-                _datePicker(context);
+            GestureDetector(
+              child: Container(
+                width: 100,
+                height: 100,
+                color: AppColors.colorGrey300,
+                alignment: Alignment.center,
+                child: Text(AppString.txtPressHere),
+                margin: EdgeInsets.only(bottom: 20.0),
+              ),
+              onTap: (){
+                _returnValueFromSelectionScreen(context);
               },
-              child: Text(AppString.txtChooseDate)
             ),
-            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}"),
-            SizedBox(
-              height: 20,
+            Visibility(
+              visible: true,
+              child: Text(msgToDisplay)
             ),
-            ElevatedButton(
-              onPressed: (){
-                _timePicker(context);
-              },
-              child: Text(AppString.txtChooseTime)
-            ),
-            Text("${selectedTime.hour}:${selectedTime.minute}"),
           ],
         ),
-      ),
+      )
     );
   }
 
-  _datePicker(BuildContext context) async {
-    final DateTime? selected=await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2021),
-      lastDate: DateTime.now()
-    );
-    if(selected!=null && selected!=currentDate){
-      setState(() {
-        currentDate=selected;
-      });
-    }
-  }
 
-  _timePicker(BuildContext context) async{
-    final TimeOfDay? timeOfDay=await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-      initialEntryMode: TimePickerEntryMode.dial
+  ///Method to push the next screen and wait until the data is received from SelectionScreen()
+  void _returnValueFromSelectionScreen(BuildContext context)async{
+    final result=await Navigator.push(context,
+        MaterialPageRoute(builder: (context) =>SelectionScreen())
     );
-    if(timeOfDay!=null && timeOfDay!=selectedTime){
-      setState(() {
-        selectedTime=timeOfDay;
-      });
-    }
+    setState(() {
+      checkboxValue=result;
+      msgToDisplay=checkboxValue?AppString.txtCheckboxWasSelected:AppString.txtCheckboxWasNotSelected;
+    });
   }
 }
+
+
