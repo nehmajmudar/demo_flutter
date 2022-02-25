@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     setState(() {
       checkboxValue=result;
-      msgToDisplay=checkboxValue?AppString.txtCheckboxWasSelected:AppString.txtCheckboxWasNotSelected;
+      msgToDisplay=checkboxValue?AppString.txtCheckboxWasSelected:"";
     });
   }
 }
