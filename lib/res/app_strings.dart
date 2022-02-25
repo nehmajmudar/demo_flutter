@@ -34,4 +34,6 @@ class AppString{
   static final String txtDatePicker="Date Picker";
   static final String txtChooseDate="Choose date";
   static final String txtChooseTime="Choose time";
+  static final String txtChooseStartingDate="Choose starting date";
+  static final String txtChooseEndingDate="Choose ending date";
 }

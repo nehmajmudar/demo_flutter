@@ -11,8 +11,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  DateTime currentDate=DateTime.now();
+  DateTime selectedDate=DateTime.now();
   TimeOfDay selectedTime=TimeOfDay.now();
+  DateTimeRange selectedDatesRange=DateTimeRange(
+    start: DateTime.now(),
+    end: DateTime(2022,4,1),
+  );
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,33 +27,53 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(AppString.txtHomeScreen),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: (){
-                _datePicker(context);
-              },
-              child: Text(AppString.txtChooseDate)
-            ),
-            Text("${currentDate.day}/${currentDate.month}/${currentDate.year}"),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: (){
-                _timePicker(context);
-              },
-              child: Text(AppString.txtChooseTime)
-            ),
-            Text("${selectedTime.hour}:${selectedTime.minute}"),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: (){
+                  _datePicker(context);
+                },
+                child: Text(AppString.txtChooseDate)
+              ),
+              Text("${selectedDate.day}/${selectedDate.month}/${selectedDate.year}"),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  _timePicker(context);
+                },
+                child: Text(AppString.txtChooseTime)
+              ),
+              Text("${selectedTime.hour}:${selectedTime.minute}"),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  _dateRangePicker(context);
+                },
+                child: Text(AppString.txtChooseStartingDate)
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  _dateRangePicker(context);
+                },
+                child: Text(AppString.txtChooseEndingDate)
+              ),
+              Text("From ${selectedDatesRange.start.day}/${selectedDatesRange.start.month}/${selectedDatesRange.start.year}"),
+              Text("To ${selectedDatesRange.end.day}/${selectedDatesRange.end.month}/${selectedDatesRange.end.year}"),
+            ],
+          ),
         ),
       ),
     );
   }
 
+  ///The method for Date Picker
   _datePicker(BuildContext context) async {
     final DateTime? selected=await showDatePicker(
       context: context,
@@ -55,13 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
       firstDate: DateTime(2021),
       lastDate: DateTime.now()
     );
-    if(selected!=null && selected!=currentDate){
+    if(selected!=null && selected!=selectedDate){
       setState(() {
-        currentDate=selected;
+        selectedDate=selected;
       });
     }
   }
 
+  ///The method for Time picker
   _timePicker(BuildContext context) async{
     final TimeOfDay? timeOfDay=await showTimePicker(
       context: context,
@@ -71,6 +98,21 @@ class _HomeScreenState extends State<HomeScreen> {
     if(timeOfDay!=null && timeOfDay!=selectedTime){
       setState(() {
         selectedTime=timeOfDay;
+      });
+    }
+  }
+
+  ///The method for selecting range of dates.
+  _dateRangePicker(BuildContext context) async{
+    final DateTimeRange? newSelectedDatesRange=await showDateRangePicker(
+      context: context,
+      initialDateRange: selectedDatesRange,
+      firstDate: selectedDatesRange.start,
+      lastDate: selectedDatesRange.end
+    );
+    if(newSelectedDatesRange!=null && newSelectedDatesRange!=selectedDatesRange){
+      setState(() {
+        selectedDatesRange=newSelectedDatesRange;
       });
     }
   }
