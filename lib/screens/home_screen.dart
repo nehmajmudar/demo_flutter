@@ -56,13 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: (){
                   _dateRangePicker(context);
                 },
-                child: Text(AppString.txtChooseStartingDate)
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  _dateRangePicker(context);
-                },
-                child: Text(AppString.txtChooseEndingDate)
+                child: Text(AppString.txtChooseDatesRange)
               ),
               Text("From ${selectedDatesRange.start.day}/${selectedDatesRange.start.month}/${selectedDatesRange.start.year}"),
               Text("To ${selectedDatesRange.end.day}/${selectedDatesRange.end.month}/${selectedDatesRange.end.year}"),
