@@ -47,4 +47,5 @@ class AppString{
   static final String txtSpam="Spam";
   static final String txtNehEmail="nehmajmudar@gmail.com";
   static final String txtFollowUp="Follow Up";
+  static final String txtNoScreenFound="No screen found";
 }
