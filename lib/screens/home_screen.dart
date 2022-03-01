@@ -1,6 +1,6 @@
 import 'package:demo_flutter/res/app_colors.dart';
 import 'package:demo_flutter/res/app_strings.dart';
-import 'package:demo_flutter/ui/list_tile_drawer.dart';
+import 'package:demo_flutter/screens/navigation_bar_item1.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,40 +12,67 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  int selectedIndex=0;
+
+  /// Logic to be performed onTap.
+  screenOptions(int index){
+    switch(index){
+      case 0:
+        return navigationBarItem1(itemColor: AppColors.colorIndigo,);
+      case 1:
+        return navigationBarItem1(itemColor: AppColors.colorRed,);
+      case 2:
+        return navigationBarItem1(itemColor: AppColors.colorOrangeAccent,);
+      case 3:
+        return navigationBarItem1(itemColor: AppColors.colorBlue,);
+
+      default:
+        return Text(AppString.txtNoScreenFound);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppString.txtHomeScreen),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text(""),
-              accountEmail: Text(AppString.txtNehEmail,style: TextStyle(color: AppColors.colorWhite),),
-              decoration: BoxDecoration(
-                color: AppColors.colorBlue
-              ),
-              currentAccountPicture: CircleAvatar(
-                // child: Image.network("https://media-exp1.licdn.com/dms/image/C5603AQEodcQaYEnc_A/profile-displayphoto-shrink_800_800/0/1627659293617?e=1651708800&v=beta&t=aWpuRzGkB2ydEuRWxvsxWXAdaZYgo0-TiCxYMKmQpQ8")
-                child: Text("N"),
-              )
-            ),
-
-            ///For the list tiles.
-            ListTileDrawer(listTileText: AppString.txtInbox, listTileIcon: Icons.mail_rounded),
-            ListTileDrawer(listTileText: AppString.txtStarred, listTileIcon: Icons.star_border_sharp),
-            ListTileDrawer(listTileText: AppString.txtSentMail, listTileIcon: Icons.mark_email_read),
-            ListTileDrawer(listTileText: AppString.txtDrafts, listTileIcon: Icons.drafts),
-            ListTileDrawer(listTileText: AppString.txtAllMail, listTileIcon: Icons.mail),
-            ListTileDrawer(listTileText: AppString.txtTrash, listTileIcon: Icons.restore_from_trash_outlined),
-            ListTileDrawer(listTileText: AppString.txtSpam, listTileIcon: Icons.cancel_presentation_sharp),
-            ListTileDrawer(listTileText: AppString.txtFollowUp, listTileIcon: Icons.arrow_back),
-          ],
-        ),
+      body: screenOptions(selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        // type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.colorWhite,
+        // selectedFontSize: 30,
+        selectedIconTheme: IconThemeData(size: 30),
+        showUnselectedLabels: false,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        selectedItemColor: AppColors.colorBlack,
+        unselectedItemColor: AppColors.colorGrey,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps),
+            label: "."
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_border_sharp),
+            label: "."
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined),
+            label: "."
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.circle),
+            label: "."
+          )
+        ],
+        currentIndex: selectedIndex,
+        onTap: (index){
+          setState(() {
+            selectedIndex=index;
+          });
+        },
       ),
     );
   }

@@ -10,4 +10,5 @@ class AppColors{
   static final Color colorGrey300=Color(0xFFE0E0E0);
   static final Color colorBlue=Color(0xFF2196F3);
   static final Color colorRed=Color(0xFFF44336);
+  static final Color colorIndigo=Color(0xFF3F51B5);
 }
