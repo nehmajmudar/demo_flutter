@@ -34,6 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("N"),
               )
             ),
+
+            ///For the list tiles.
             ListTileDrawer(listTileText: AppString.txtInbox, listTileIcon: Icons.mail_rounded),
             ListTileDrawer(listTileText: AppString.txtStarred, listTileIcon: Icons.star_border_sharp),
             ListTileDrawer(listTileText: AppString.txtSentMail, listTileIcon: Icons.mark_email_read),

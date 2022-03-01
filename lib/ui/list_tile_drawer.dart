@@ -17,7 +17,7 @@ class ListTileDrawer extends StatelessWidget {
         children: [
           Icon(listTileIcon,color: AppColors.colorGrey,),
           Padding(
-            padding: EdgeInsets.only(left: 8.0),
+            padding: EdgeInsets.only(left: 5.0,top: 5.0,bottom: 5.0),
             child: Text(listTileText,style: TextStyle(color: AppColors.colorGrey),),
           ),
         ],
