@@ -37,4 +37,14 @@ class AppString{
   static final String txtChooseStartingDate="Choose starting date";
   static final String txtChooseEndingDate="Choose ending date";
   static final String txtChooseDatesRange="Choose dates range";
+  static final String txtNavigationDrawer="Navigation Drawer";
+  static final String txtInbox="Inbox";
+  static final String txtStarred="Starred";
+  static final String txtSentMail="Sent mail";
+  static final String txtDrafts="Drafts";
+  static final String txtAllMail="All mail";
+  static final String txtTrash="Trash";
+  static final String txtSpam="Spam";
+  static final String txtNehEmail="nehmajmudar@gmail.com";
+  static final String txtFollowUp="Follow Up";
 }

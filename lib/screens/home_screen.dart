@@ -1,5 +1,6 @@
 import 'package:demo_flutter/res/app_colors.dart';
 import 'package:demo_flutter/res/app_strings.dart';
+import 'package:demo_flutter/ui/list_tile_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,103 +12,39 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  DateTime selectedDate=DateTime.now();
-  TimeOfDay selectedTime=TimeOfDay.now();
-  DateTimeRange selectedDatesRange=DateTimeRange(
-    start: DateTime.now(),
-    end: DateTime(2022,4,1),
-  );
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.colorBlack,
         title: Text(AppString.txtHomeScreen),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: (){
-                  _datePicker(context);
-                },
-                child: Text(AppString.txtChooseDate)
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(""),
+              accountEmail: Text(AppString.txtNehEmail,style: TextStyle(color: AppColors.colorWhite),),
+              decoration: BoxDecoration(
+                color: AppColors.colorBlue
               ),
-              Text("${selectedDate.day}/${selectedDate.month}/${selectedDate.year}"),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  _timePicker(context);
-                },
-                child: Text(AppString.txtChooseTime)
-              ),
-              Text("${selectedTime.hour}:${selectedTime.minute}"),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: (){
-                  _dateRangePicker(context);
-                },
-                child: Text(AppString.txtChooseDatesRange)
-              ),
-              Text("From ${selectedDatesRange.start.day}/${selectedDatesRange.start.month}/${selectedDatesRange.start.year}"),
-              Text("To ${selectedDatesRange.end.day}/${selectedDatesRange.end.month}/${selectedDatesRange.end.year}"),
-            ],
-          ),
+              currentAccountPicture: CircleAvatar(
+                // child: Image.network("https://media-exp1.licdn.com/dms/image/C5603AQEodcQaYEnc_A/profile-displayphoto-shrink_800_800/0/1627659293617?e=1651708800&v=beta&t=aWpuRzGkB2ydEuRWxvsxWXAdaZYgo0-TiCxYMKmQpQ8")
+                child: Text("N"),
+              )
+            ),
+            ListTileDrawer(listTileText: AppString.txtInbox, listTileIcon: Icons.mail_rounded),
+            ListTileDrawer(listTileText: AppString.txtStarred, listTileIcon: Icons.star_border_sharp),
+            ListTileDrawer(listTileText: AppString.txtSentMail, listTileIcon: Icons.mark_email_read),
+            ListTileDrawer(listTileText: AppString.txtDrafts, listTileIcon: Icons.drafts),
+            ListTileDrawer(listTileText: AppString.txtAllMail, listTileIcon: Icons.mail),
+            ListTileDrawer(listTileText: AppString.txtTrash, listTileIcon: Icons.restore_from_trash_outlined),
+            ListTileDrawer(listTileText: AppString.txtSpam, listTileIcon: Icons.cancel_presentation_sharp),
+            ListTileDrawer(listTileText: AppString.txtFollowUp, listTileIcon: Icons.arrow_back),
+          ],
         ),
       ),
     );
-  }
-
-  ///The method for Date Picker
-  _datePicker(BuildContext context) async {
-    final DateTime? selected=await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2021),
-      lastDate: DateTime.now()
-    );
-    if(selected!=null && selected!=selectedDate){
-      setState(() {
-        selectedDate=selected;
-      });
-    }
-  }
-
-  ///The method for Time picker
-  _timePicker(BuildContext context) async{
-    final TimeOfDay? timeOfDay=await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-      initialEntryMode: TimePickerEntryMode.dial
-    );
-    if(timeOfDay!=null && timeOfDay!=selectedTime){
-      setState(() {
-        selectedTime=timeOfDay;
-      });
-    }
-  }
-
-  ///The method for selecting range of dates.
-  _dateRangePicker(BuildContext context) async{
-    final DateTimeRange? newSelectedDatesRange=await showDateRangePicker(
-      context: context,
-      initialDateRange: selectedDatesRange,
-      firstDate: selectedDatesRange.start,
-      lastDate: selectedDatesRange.end
-    );
-    if(newSelectedDatesRange!=null && newSelectedDatesRange!=selectedDatesRange){
-      setState(() {
-        selectedDatesRange=newSelectedDatesRange;
-      });
-    }
   }
 }
