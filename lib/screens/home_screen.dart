@@ -28,31 +28,29 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
       ),
       drawer: Drawer(
-        child: Material(
-          child: ListView(
-            children: [
-              UserAccountsDrawerHeader(
-                accountName: Text(""),
-                accountEmail: Text(AppString.txtNehEmail,style: TextStyle(color: AppColors.colorWhite),),
-                decoration: BoxDecoration(
-                  color: AppColors.colorBlue
-                ),
-                currentAccountPicture: CircleAvatar(
-                  // child: Image.network("https://media-exp1.licdn.com/dms/image/C5603AQEodcQaYEnc_A/profile-displayphoto-shrink_800_800/0/1627659293617?e=1651708800&v=beta&t=aWpuRzGkB2ydEuRWxvsxWXAdaZYgo0-TiCxYMKmQpQ8")
-                  child: Text("N"),
-                ),
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(""),
+              accountEmail: Text(AppString.txtNehEmail,style: TextStyle(color: AppColors.colorWhite),),
+              decoration: BoxDecoration(
+                color: AppColors.colorBlue
               ),
-              ///For the list tiles.
-              listTileDrawer(listTileText: AppString.txtInbox, listTileIcon: Icons.mail_rounded,onClicked: ()=> currentItem(0)),
-              listTileDrawer(listTileText: AppString.txtStarred, listTileIcon: Icons.star_border_sharp,onClicked: ()=>  currentItem(1)),
-              listTileDrawer(listTileText: AppString.txtSentMail, listTileIcon: Icons.mark_email_read,onClicked: ()=> currentItem(2)),
-              listTileDrawer(listTileText: AppString.txtDrafts, listTileIcon: Icons.drafts,onClicked:  ()=> currentItem(3)),
-              listTileDrawer(listTileText: AppString.txtAllMail, listTileIcon: Icons.mail,onClicked:  ()=> currentItem(4)),
-              listTileDrawer(listTileText: AppString.txtTrash, listTileIcon: Icons.restore_from_trash_outlined,onClicked:  ()=> currentItem(5)),
-              listTileDrawer(listTileText: AppString.txtSpam, listTileIcon: Icons.cancel_presentation_sharp,onClicked:  ()=> currentItem(6)),
-              listTileDrawer(listTileText: AppString.txtFollowUp, listTileIcon: Icons.arrow_back,onClicked:  ()=> currentItem(7)),
-            ],
-          ),
+              currentAccountPicture: CircleAvatar(
+                // child: Image.network("https://media-exp1.licdn.com/dms/image/C5603AQEodcQaYEnc_A/profile-displayphoto-shrink_800_800/0/1627659293617?e=1651708800&v=beta&t=aWpuRzGkB2ydEuRWxvsxWXAdaZYgo0-TiCxYMKmQpQ8")
+                child: Text("N"),
+              ),
+            ),
+            ///For the list tiles.
+            listTileDrawer(listTileText: AppString.txtInbox, listTileIcon: Icons.mail_rounded,onClicked: ()=> currentItem(0)),
+            listTileDrawer(listTileText: AppString.txtStarred, listTileIcon: Icons.star_border_sharp,onClicked: ()=>  currentItem(1)),
+            listTileDrawer(listTileText: AppString.txtSentMail, listTileIcon: Icons.mark_email_read,onClicked: ()=> currentItem(2)),
+            listTileDrawer(listTileText: AppString.txtDrafts, listTileIcon: Icons.drafts,onClicked:  ()=> currentItem(3)),
+            listTileDrawer(listTileText: AppString.txtAllMail, listTileIcon: Icons.mail,onClicked:  ()=> currentItem(4)),
+            listTileDrawer(listTileText: AppString.txtTrash, listTileIcon: Icons.restore_from_trash_outlined,onClicked:  ()=> currentItem(5)),
+            listTileDrawer(listTileText: AppString.txtSpam, listTileIcon: Icons.cancel_presentation_sharp,onClicked:  ()=> currentItem(6)),
+            listTileDrawer(listTileText: AppString.txtFollowUp, listTileIcon: Icons.arrow_back,onClicked:  ()=> currentItem(7)),
+          ],
         ),
       ),
       body: getScreen(currentIndex),
