@@ -6,11 +6,6 @@ class AllMailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppString.txtAllMail),
-        centerTitle: true,
-      ),
-    );
+    return Scaffold();
   }
 }

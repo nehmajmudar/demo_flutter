@@ -7,10 +7,6 @@ class DraftsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppString.txtDrafts),
-        centerTitle: true,
-      ),
     );
   }
 }

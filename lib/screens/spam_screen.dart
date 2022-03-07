@@ -7,10 +7,6 @@ class SpamScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppString.txtSpam),
-        centerTitle: true,
-      ),
     );
   }
 }

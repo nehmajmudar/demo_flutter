@@ -6,11 +6,6 @@ class FollowUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(AppString.txtFollowUp),
-        centerTitle: true,
-      ),
-    );
+    return Scaffold();
   }
 }
