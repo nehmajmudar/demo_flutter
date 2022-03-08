@@ -48,4 +48,8 @@ class AppString{
   static final String txtNehEmail="nehmajmudar@gmail.com";
   static final String txtFollowUp="Follow Up";
   static final String txtNoScreenFound="No screen found";
+  static final String txtLoginForm="Login form";
+  static final String txtName="Name";
+  static final String txtEmailId="Email id";
+  static final String txtSubmit="Submit";
 }
