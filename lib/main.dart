@@ -1,4 +1,4 @@
-import 'package:demo_flutter/screens/home_screen.dart';
+import 'package:demo_flutter/screens/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => LoginScreen(),
       },
     );
   }
