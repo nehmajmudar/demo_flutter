@@ -53,4 +53,6 @@ class AppString{
   static final String txtEmailId="Email id";
   static final String txtSubmit="Submit";
   static final String txtPassword="Password";
+  static final String txtGetUserInfo="Get user info";
+  static final String txtYouAreLoggedIn="You are logged in.";
 }
